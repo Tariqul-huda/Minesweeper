@@ -1,28 +1,36 @@
 #include <iostream>
 #include<cstdio>
-#define MAX_ROW 3
-#define MAX_COL 5
+
 using namespace std;
 
 int main()
 {
-    char a[MAX_ROW][MAX_COL] = {{'*','*','-','-','-'},{'-','-','-','-','-'},{'-','*','-','-','-'}};
-    for(int row=0; row<MAX_ROW; row++)
+    int n,m;
+    cin>>n>>m;
+    char a[n][m];
+    for(int row=0;row<n;row++){
+        for(int col=0;col<m;col++){
+                cin>>a[row][col];
+                }
+    }
+
+
+    for(int row=0; row<n; row++)
     {
-        for(int col=0; col<MAX_COL; col++)
+        for(int col=0; col<m; col++)
         {
-            if(a[row][col]=='-')
+            if(a[row][col]=='.')
             {
                 a[row][col]='0';
             }
         }
     }
-    for(int row=0; row<MAX_ROW; row++)
+    for(int row=0; row<n; row++)
     {
-        for(int col=0; col<MAX_COL; col++)
+        for(int col=0; col<m; col++)
         {
 
-            if(row>=0 && row<MAX_COL-1)
+            if(row>=0 && row<n-1)
             {
                 if(a[row][col]=='*' && a[row][col+1]>='0') //right
                 {
@@ -38,28 +46,28 @@ int main()
                     a[row-1][col]++;
                 if(col!=0)
                 {
-                    if(a[row][col]=='*' && a[row-1][col-1]>='0')//Up-left
+                    if(a[row][col]=='*' && a[row-1][col-1]>='0')//Up.left
                         a[row-1][col-1]++;
-                    if(a[row][col]=='*' && a[row+1][col-1]>='0') //Down-left
+                    if(a[row][col]=='*' && a[row+1][col-1]>='0') //Down.left
                         a[row+1][col-1]++;
                 }
-                if(col!=MAX_COL-1)
+                if(col!=m-1)
                 {
-                    if(a[row][col]=='*'&&a[row+1][col+1]>='0') //Down-right
+                    if(a[row][col]=='*'&&a[row+1][col+1]>='0') //Down.right
                         a[row+1][col+1]++;
 
-                    if(a[row][col]=='*' && a[row-1][col+1]>='0') //Up-right
+                    if(a[row][col]=='*' && a[row-1][col+1]>='0') //Up.right
                         a[row-1][col+1]++;
                 }
 
             }
             else
             {
-                if(a[row][col]=='*' && a[row][col+1]>='0') //-->
+                if(a[row][col]=='*' && a[row][col+1]>='0') //..>
                 {
                     a[row][col+1]++;
                 }
-                if(a[row][col]=='*' && a[row][col-1]>='0') //<--
+                if(a[row][col]=='*' && a[row][col-1]>='0') //<..
                     a[row][col-1]++;
 
             }
@@ -67,9 +75,9 @@ int main()
 
         }
     }
-    for(int row=0; row<MAX_ROW; row++)
+    for(int row=0; row<n; row++)
     {
-        for(int col=0; col<MAX_COL; col++)
+        for(int col=0; col<m; col++)
         {
             printf("%c",a[row][col]);
         }
