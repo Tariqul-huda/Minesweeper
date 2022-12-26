@@ -76,7 +76,7 @@ int main()
                 }
             }
         }
-        cout<<"Field #"<<counT<<endl;
+        cout<<"Field #"<<counT<<":"<<endl;
         for(int row=0; row<n; row++)
         {
             for(int col=0; col<m; col++)
