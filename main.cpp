@@ -6,7 +6,7 @@ int main()
 {
     int n,m,counT=0;
 
-//    freopen("input.txt","r",stdin);
+    freopen("input.txt","r",stdin);
     while(scanf("%d %d",&n,&m)==2 && (m||n))
     {
         char a[n][m];
@@ -72,6 +72,13 @@ int main()
                     }
                     if(a[row][col]=='*' && a[row][col-1]>='0') //<..
                         a[row][col-1]++;
+                    if(a[row][col]=='*' && a[row-1][col-1]>='0')//Up.left
+                        a[row-1][col-1]++;
+                    if(a[row][col]=='*' && a[row-1][col+1]>='0') //Up.right
+                        a[row-1][col+1]++;
+                    if(a[row][col]=='*' && a[row-1][col]>='0') //Up
+                        a[row-1][col]++;
+
 
                 }
             }
@@ -83,7 +90,7 @@ int main()
             {
                 printf("%c",a[row][col]);
             }
-             printf("\n");
+            printf("\n");
         }
         printf("\n");
 
